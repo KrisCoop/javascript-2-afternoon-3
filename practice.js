@@ -23,16 +23,18 @@
 ////////// PROBLEM 1 //////////
 
 /*
-  Write a function called first that takes in two parameters, an array and a callback function.
-  Then invoke the callback function, passing in the first element in the array as it's argument.
+  Write a function /// called first // that takes in two parameters, /// an array and a callback function.
+  Then invoke the callback function, /// passing in the first element in the array as it's argument.
 */
 
-// Code Here 
+function first(names, cb) {
+  cb(names[0]);                                     
+}                                                    
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
-first(names, function(firstName){
+first(names, function(firstName){                
   console.log('The first name in names is ' + firstName);
   return firstName;
 });
@@ -43,12 +45,14 @@ first(names, function(firstName){
 ////////// PROBLEM 2 //////////
 
 /*
-  Write a function called last that takes in an array and a callback function. 
-  Then invoke the callback, passing in the last element in the array as the argument.
+  Write a function /// called last /// that takes in an array ///and a callback function. 
+  Then invoke the callback,/// passing in the last element in the array as the argument.
 */
 
-//Code Here
-
+function last(names, lastName) {
+  lastName(names[names.length - 1]);                                       
+}                                                        
+                                                      
 // Do not edit the code below.
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -61,11 +65,13 @@ last(names, function(lastName){
 ////////// PROBLEM 3 //////////
 
 /*
-  Write a function called multiply that takes in three parameters: two numbers and a callback function.  
-  Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
+  Write a function /// called multiply /// that takes in three parameters: /// two numbers and a callback function.  
+  Invoke the callback, /// passing in the product of the two numbers multiplied as the argument. 
 */
 
-//Code Here
+function multiply(num1, num2, cb) {
+  cb(num1 * num2);
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -78,13 +84,23 @@ multiply(4, 3, function(answer){
 ////////// PROBLEM 4 //////////
 
 /*
-  Write a function called contains that takes in three parameters: an array, a name and a callback.  
+  Write a function /// called contains /// that takes in three parameters: an array, a name and a callback.  
   Check if the name exists in the array. 
   If it does, invoke the callback with true as the argument. 
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-//Code Here 
+// my code attempt :
+ function contains(arr, name, cb) {
+   for (var i = 0; i < arr.length; i++) {
+     if (arr[i] === name) {
+       cb(true);     
+     }                       
+     else {
+       cb(false);    
+     }
+   }
+ };
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -101,11 +117,28 @@ contains(names, 'Colt', function(result){
 ////////// PROBLEM 5 //////////
 
 /*
-  Write a function called uniq that takes in an array and a callback function.
-  Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
+  Write a function /// called uniq /// that takes in an array and a callback function.
+  Remove any duplicate values from the array, /// and invoke the callback with the modified array as an argument.
 */
+/// write a function called uniq
+/// put an array and a callback function in the function as parameters
+/// make a new, empty array for our non-duplicated list to go into 
+/// make a for loop that searches through our new array
+/// make a nested for loop that searches through the old array
+/// make an if statement that checks if the current index of the old array equals the current index of the new array. 
+/// If it does match, it should skip the current index.
+/// If it doesn't match, it should push it to the new array.
+/// write a for loop that adds each element of the old array into the new array
+/// make the original array = our new array
+/// invoke the callback with the new array as its (argument)
 
-//Code Here
+
+///I tried using Josh's code here but it isn't passing the tests? Maybe I made a mistake?
+const uniq = (arr) => {
+  return arr.filter((e, i, a) => {
+    return a.indexOf(e) === i;
+  })
+}
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
@@ -118,11 +151,16 @@ uniq(names, function(uniqArr){
 ////////// PROBLEM 6 //////////
 
 /* 
-  Write a function called each that takes in an array of names and a callback function. 
-  For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
+  Write a function /// called each /// that takes in an array of names /// and a callback function. 
+  For each name in the array, invoke the callback/// and pass in the name /// and the name's index as arguments.
 */
+ 
+function each(names, cb) {
+  for (var i = 0; i < names.length; i++) {
+    cb(names[i] , i);
+  }
+}
 
-//Code Here 
 
 // Do not edit the code below.
 each(names, function(item, indice){
@@ -138,9 +176,13 @@ each(names, function(item, indice){
   Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
   When the correct user object is found, invoke the callback with the user object as an argument.
 */
-
-// Code here
-
+function getUserById(users, id, cb) {
+  for (let i = 0; i < users.length; i++){
+    if (users[i].id === id) {
+      cb(users[i]);
+    }
+  }
+}
 // Do not edit the code below.
 var users = [
   {
