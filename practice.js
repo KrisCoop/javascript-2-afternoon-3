@@ -133,11 +133,11 @@ contains(names, 'Colt', function(result){
 /// invoke the callback with the new array as its (argument)
 
 
-///I tried using Josh's code here but it isn't passing the tests? Maybe I made a mistake?
-const uniq = (arr) => {
-  return arr.filter((e, i, a) => {
-    return a.indexOf(e) === i;
+function uniq(arr, cb) {
+  let newArray = arr.filter(function(item, index){
+    return arr.indexOf(item) >= index;
   })
+  cb(newArray);
 }
 
 // Do not edit the code below.
